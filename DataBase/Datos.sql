@@ -23,6 +23,10 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP DATABASE IF EXISTS `gestor_notas`;
+DROP TABLE IF EXISTS `iconos`;
+DROP TABLE IF EXISTS `notas`;
+
 --
 -- Estructura de tabla para la tabla `iconos`
 --
