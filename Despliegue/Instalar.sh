@@ -13,7 +13,7 @@ then
    PASSDB=$2
 fi
 
-cp -r ../Codigo/ $WWW
+cp -r ../Codigo/* $WWW
 mysqladmin -u $USERDB -p$USERDB create $BBDD
 mysql -u $USERDB -p$USERDB $BBDD < ../DataBase/$DATOS
 
