@@ -3,6 +3,7 @@
 USERDB="debianDB"
 PASSDB="debianDB"
 HOST=$(hostname -I)
+WWW="/var/www/html/"
 DATOS="Datos.sql"
 BBDD="gestor_notas"
 
@@ -12,7 +13,7 @@ then
    PASSDB=$2
 fi
 
-cp -r ../Codigo/ /var/www/html
+cp -r ../Codigo/ $WWW
 mysqladmin -u $USERDB -p$USERDB create $BBDD
 mysql -u $USERDB -p$USERDB $BBDD < ../DataBase/$DATOS
 
