@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 23:59:50
+-- Tiempo de generación: 09-05-2023 a las 00:31:37
 -- Versión del servidor: 8.0.32
 -- Versión de PHP: 8.2.0
 
@@ -20,12 +20,12 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gestor_notas`
 --
-
--- --------------------------------------------------------
-
-DROP DATABASE IF EXISTS `gestor_notas`;
+CREATE DATABASE IF NOT EXISTS `gestor_notas` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci;
+USE `gestor_notas`;
 DROP TABLE IF EXISTS `iconos`;
 DROP TABLE IF EXISTS `notas`;
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `iconos`

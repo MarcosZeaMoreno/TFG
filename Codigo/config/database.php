@@ -3,8 +3,8 @@ class Database {
 
     private $hostname = "localhost";
     private $database = "gestor_notas";
-    private $username = "pma";
-    private $password = "123456";
+    private $username = "debianDB";
+    private $password = "debianDB";
     private $charset = "utf8";
 
     function conectar()

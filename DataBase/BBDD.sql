@@ -23,6 +23,8 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE DATABASE IF NOT EXISTS `gestor_notas` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci;
+USE `gestor_notas`;
 DROP TABLE IF EXISTS `iconos`;
 DROP TABLE IF EXISTS `notas`;
 
