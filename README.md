@@ -1,4 +1,4 @@
-- [Gestor de Notas](#título-de-proyecto)
+- [Gestor de Notas](#gestor-de-notas)
   - [Antecedentes](#antecedentes)
 - [REQUISITOS](#requisitos)
   - [Requisitos funcionales](#requisitos-funcionales)
@@ -27,7 +27,7 @@
   - [Página de Inicio](#página-de-inicio)
 - [BIBLIOGRAFÍA](#bibliografía)
 
-# TÍTULO DE PROYECTO
+# Gestor de notas
 ## Antecedentes
 Breve descripción del proyecto.
 
