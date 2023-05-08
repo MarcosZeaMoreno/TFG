@@ -17,4 +17,4 @@ cp -r ../Codigo/* $WWW
 mysqladmin -u $USERDB -p$USERDB create $BBDD
 mysql -u $USERDB -p$USERDB $BBDD < ../DataBase/$DATOS
 
-echo "http://$HOST/Codigo/index.php"
+echo "http://$HOST/index.php"
