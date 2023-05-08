@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
+.text-golos {
+    font-family: 'Golos Text', sans-serif;
+}
+
+.text-bad-script {
+    font-family: 'Bad Script', cursive;
+}
+
+.btn-crear-nota {
+    width: 95%;
+}
+
+.grupo-boton {
+    width: 95%;
+}
+
+.textarea_notas {
+    border: 2px solid #000;
+    border-radius: 0.3rem;
+    min-width: 134%;
+    min-height: 750px;
+}
+
+.a-nota {
+    word-break: break-word; 
+}
+
+.icon-nota {
+    text-decoration: none;
+    color: white;
+}
+
+.a-nota {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-notas {
+    min-height: 821px;
+}
+
+.rojo {
+    border-color: red;
+}
+
+.negro {
+    border-width: 0.1rem;
+    border-color: black;
+}
+
+.botones-offcanvas {
+    padding-left: 80px;
+}
+
+.alarma {
+    font-size: 100px;
+}
+
+.hora-alarma {
+    width: 100%;
+}
+
+.contenido-alarma1, .cuerpo, .contenido-alarma2{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.cuerpo {
+    flex-direction: column;
+}
+
+.cuerpo h1 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0;
+}
+
+.cuerpo .contenido-alarma2 {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cuerpo .contenido-alarma2.disable {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.contenido-alarma2 .columna {
+    border-radius: 5px;
+    padding: 0 2px;
+    border: 1px solid #999;
+    width: 30%;
+}
+
+.columna select {
+    outline: none;
+    border: none;
+    height: 33px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.seleccion-notas {
+    min-height: 868px;
+    padding-top: 350px;
+}
