@@ -10,16 +10,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<!-- SOLUCIONAR / AGREGAR -->
-<!-- SOLUCIONAR / AGREGAR -->
-<!-- SOLUCIONAR / AGREGAR ------ 
-            + Arreglar Seleccionar nota no centrado y se ve fondo blanco
-            + Añadir font-family
-            + Ordenar el código con comentarios.
-            ------ SOLUCIONAR / AGREGAR -->
-<!-- SOLUCIONAR / AGREGAR -->
-<!-- SOLUCIONAR / AGREGAR -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +27,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <!-- Bootstrap icons -->
+    <!-- Script validador de datos -->
     <script src="script/script.js"></script>
+    <!-- Script validador de datos -->
+    <!-- Script alerta al eliminar nota -->
     <script>
         function confirmarBorrar(idNota) {
             if (confirm("¿Estás seguro de que quieres borrar esta nota?")) {
@@ -45,6 +38,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             }
         }
     </script>
+    <!-- Script alerta al eliminar nota -->
 </head>
 
 <body>
@@ -65,6 +59,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="header-right">
 
+                        <!-- Mostrar botón funcional o no dependiendo de si se ha seleccionado alguna nota -->
+
                         <?php
 
                         $id_nota = isset($_GET['id_nota']) ? $_GET['id_nota'] : null;
@@ -79,6 +75,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                                 </button>';
                         }
                         ?>
+
+                        <!-- Mostrar botón funcional o no dependiendo de si se ha seleccionado alguna nota -->
 
                         <button type="button" class="btn btn-dark me-4 mt-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop_alarm">
                             <i class="bi-alarm"></i>
@@ -132,6 +130,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <div class="modal-body text-center">
                         <div class="row mt-3">
 
+                            <!-- Recoger y mostrar datos de la base de datos de la tabla iconos -->
+
                             <?php
 
                             $id_nota = isset($_GET['id_nota']) ? $_GET['id_nota'] : null;
@@ -145,6 +145,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                                         </div>';
                             }
                             ?>
+
+                            <!-- Recoger y mostrar datos de la base de datos de la tabla iconos -->
 
                         </div>
 
@@ -326,7 +328,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                         <h1>' . $row['titulo'] . '</h1><h5>' . $row['fecha'] . '</h5>
                     </div>
                     <form action="config/register_textarea.php" id="form_textarea" method="post">
-                        <textarea class="textarea_notas" spellcheck="false" name="reg_texto" id="area_texto">' . $row['texto'] . '</textarea>
+                        <textarea class="textarea_notas text-bad-script" spellcheck="false" name="reg_texto" id="area_texto">' . $row['texto'] . '</textarea>
                         <input type="hidden" name="reg_id_nota" value="' . $row['id_nota'] . '">
                         <script type="text/javascript" src="script/textarea.js"></script>
                     </form>
