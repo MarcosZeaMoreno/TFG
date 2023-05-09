@@ -14,10 +14,10 @@ if (isset($_GET['id']) && isset($_GET['id_icono'])) {
     $sql->bindParam(':id_nota', $id_nota, PDO::PARAM_INT);
     $sql->execute();
 
-    header ('Location: http://localhost/FCT/index.php' . '?id_nota=' . $id_nota);
+    header ('Location: ../index.php' . '?id_nota=' . $id_nota);
     exit();
 } else {
-    header ('Location: http://localhost/FCT/index.php');
+    header ('Location: ../index.php');
     exit();
 }
 ?>

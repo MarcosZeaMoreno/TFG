@@ -26,7 +26,7 @@
         echo "error al guardar datos";
     }
 
-    header ("Location: http://localhost/FCT/index.php");
+    header ("Location: ../index.php");
     exit();
 
 ?>

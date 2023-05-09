@@ -20,7 +20,7 @@
         echo "error al guardar datos";
     }
 
-    header ("Location: http://localhost/FCT/index.php" . "?id_nota=" . $id_nota);
+    header ("Location: ../index.php" . "?id_nota=" . $id_nota);
     exit();
 
 ?>

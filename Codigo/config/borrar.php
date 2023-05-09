@@ -12,10 +12,10 @@ if (isset($_GET['id'])) {
     $sql->bindParam(':id_nota', $id_nota, PDO::PARAM_INT);
     $sql->execute();
 
-    header ("Location: http://localhost/FCT/index.php");
+    header ("Location: ../index.php");
     exit();
 } else {
-    header ("Location: http://localhost/FCT/index.php");
+    header ("Location: ../index.php");
     exit();
 }
 ?>
