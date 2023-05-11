@@ -29,61 +29,49 @@
 
 # Gestor de notas
 ## Antecedentes
-Breve descripción del proyecto.
 
-Este proyecto muestra todos los pasos a seguir para recolectar, organizar, tratar y construir un
-portal Web empezando desde cero, para ...
-
-Se han utilizado distintos lenguajes de programación, como pueden ser PHP y JavaScript para
-su desarrollo, y para su diseño se ha hecho uso de Photoshop y de estilos CSS...
+El Gestor de Notas surge de la necesidad de tener un sistema para guardar notas que permita una personalización más completa y una mejor organización de las mismas.
 
 # REQUISITOS
-
-Se describen de forma concisa los requisitos funcionales de vuestra aplicación.
 ## Requisitos funcionales
 
-Se enumeran todos los requisitos funcionales de vuestra aplicación. Descripción detallada de cada requisito, incluyendo su funcionamiento, validaciones si fuesen necesarias, y cualqier información relevante.
+R1: Registro de nota.
+R1.1: El usuario deberá de rellanar la fecha y título de la nota.
+R2: Administración de notas.
+R2.2: El usuario podrá crearlas, editarlas y borrarlas.
+R2.2: El usuario podrá escribir en ellas.
 
-**Por ejemplo:**
 
-R1: Inicio de sesión con usuario autenticado
-R1.1: El usuario podrá recuperar su contraseña 
-R1.2: El usuario tendrá que ser autenticado por un administrador
-R1.3: El usuario deberá usar una dirección de correo válida
-R2: Administración de usuarios
-R2.1: El administrador gestionará usuarios, productos y compras.
-R2.2: Cualquier operación realizada sobre los usuarios deberá almacenarse en un log.
-...
-
-Esto se realiza para cada uno de los requisitos de nuestra aplicación.
-
-Además de los requisitos de vuestra aplicación hay que añadir los siguientes:
+Además de los requisitos funcionales, están los siguientes:
 
 - R1. Diseño responsive
-- R2. Control de errores en formularios que deben incluir como mínimo un registro de usuario
-- R2.1 El registro de usuarios contendrá cómo mínimo los siguientes campos: 
-  - DNI
-  - Teléfono
-  - Mail
-  - Fecha de nacimiento
-  - Teléfono 
-  - Dirección
-  - Provincia (elegible desde un desplegable)
-  - Población (se rellenará según los datos de la provincia seleccionada.)
-- R3. Acceso restringido a parte privada a usuarios no registrados.
+- R2. Control de errores en formularios que deben incluir como mínimo un registro de notas.
+- R2.1 El registro de notas contendrá los siguientes campos: 
+  - Título
+  - Fecha
 
 # ANÁLISIS Y DISEÑO WEB
-
 ## Guía de estilos
 
-Debemos señalar los colores corporativos y el diseño del logo. Justificando su uso.
-## Prototipo web y boceto de la estructura
+Colores primarios corporativos:
+- #f2b269
+- #ffffff
+Colores secundarios:
+- #6c757d
+- #000000
+- #FF0000
 
-Mookup del proyecto. 
+## Prototipo web boceto de la estructura
+
+![PrototipoWeb](Imagenes/Pagina_web.png)
+
+## Logotipo
+
+![Logotipo](Imagenes/LogoGdn.png)
 
 ## Planificación de tareas
 
-Con un diagrama de Gantt, planificamos el desarrollo del proyecto. Pautando qué vamos hacer y cuándo lo vamos a finalizar.
+![DiagramaGantt](Imagenes/Diagrama_Gantt.png)
 
 ## Base de datos
 ### Diseño Entidad Relación de la BBDD
@@ -93,7 +81,7 @@ Realizamos el Esquema Entidad Relación de la BBDD de nuestra aplicación.
 Se debe mostrar el diseño relacional. No lo que os muestra la aplicación MySQL Workbench o el gestor que usais. Quiero los diagrmas E-R con cajas para las entidades y rombos para las relaciones. Se deben tener en cuenta las cardinalidades.
 ### Modelo relacional BBDD
 
-Se muestra el diseño de la BBDD según el GUI que esteís usando. Deben aparecer todas las entidades en la 3FN, los campos de las tablas y las cardinalidades. 
+Se muestra el diseño de la BBDD según el GUI que esteís usando. Deben aparecer todas las entidades en la 3FN, los campos de las tablas y las cardinalidades.
 ### Script de creación BBDD
 
 Scrip de creación de las BBDD, sin los datos. Cada una de las tablas con sus claves referenciadas. 
@@ -106,39 +94,51 @@ Se incluyen y describen todas las consultas que se emplean en el desarrollo del 
 
 ## Validación de formularios
 
-Se incluyen todos los formularios que se emplean en la WEB y se especifican qué tipo de validación se va ha realizar.
+En el siguiente formulario lo que validamos son los inputs con id "fecha" y "titulo". La validación de estos trata en exigir que el título contenga entre 3 y 3 carácteres del abecedario, y la fecha tiene que estar escrita en el formato "YYYY/MM/DD".
+``` [html]
+<form class="formulario" id="formulario" action="config/register.php" method="post">
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Introduzca una fecha</label>
+      <input type="text" id="fecha" name="reg_fecha" class="form-control" id="exampleFormControlInput1" placeholder="Ejemplo de fecha -> 2023/07/23" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Introduzca un título</label>
+      <input type="text" id="titulo" name="reg_titulo" class="form-control" id="exampleFormControlInput1" placeholder="Ejemplo de título -> Poema atardecer" />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Cerrar
+    </button>
+    <input type="submit" name="crear" class="btn btn-warning boton" id="btn-agregar" value="Crear nota"></input>
+  </div>
+</form>
+```
 
 ## Jerarquía de directorios
-
-Mostramos el árbol de directorios de nuestro proyecto WEB, tal y como lo visualizaríamos en la carpeta WWW.
-
-Podemos usar la herramienta `tree -d` en entorno linux.
 
 ![ArbolDirectorios](Imagenes/ArbolDirectorios.png)
 
 ### Contenido directorios
 
-Breve explicación de lo que tenemos contenido en cada directorio. Por ejemplo:
-
-> `./` -> Contiene los ficheros principales “index.php”, “estilos.css”, “realizar_recomendacion.php”, “realizar_enviao.php”, “descargas.php” y “javascript.js”.
+> `./` -> Contiene los ficheros principales “index.php” y “style.css”.
 > 
-> `descargas` -> Contiene los archivo PDF descargables desde el sitio web.
+> `audio` -> Contiene el arcivo "ringtone.mp3" que básicamente es el tono de alarma.
 > 
-> `Esp` -> Contiene las imágenes y las páginas web en español.
+> `config` -> Contiene los archivos "borrar.php", "cambiar_icono.php", "database.php", "register_textarea.php" y "register.php".
 > 
-> `Eus` -> Contiene las imágenes y las páginas web en euskera.
-> 
-> ...
+> `script` -> Contiene los archivos "alarma.js", "script.js" y "textarea.js".
 
 ## Diseño de la interface
 
-En base al apartado [Prototipo web y boceto de la estructura](#prototipo-web-y-boceto-de-la-estructura) describimos el contenido de la interface de nuestra aplicación. Por ejemplo:
-
-> El sitio web consta de cinco partes fundamentales. Esta estructura es común en todas las páginas que forman el sitio web.
+> El sitio web consta de tres partes fundamentales. Esta estructura es común en todas las páginas que forman el sitio web.
 > 
-> **Cabecera**: Contiene el logo de la empresa, que está formado por las siglas “ostargi” cruzadas por una “O” mayúscula. Además, en la parte superior de la cabecera, está el menú de selección de idioma.
+> **Cabecera**: Contiene 3 botones, el de creación de nota, el de cambiar icono, y por último un botón para añadir una alarma. A demás, al ser responsive, cuando el width baja de 992px, se quita el botón de "crear nota" y se añade un botón de menú.
 > 
-> **Panel horizontal**: Esta ubicado justo debajo de la cabecera. Contiene los enlaces a las páginas: inicio, como llegar, contactar
+> **Aside**: Esta ubicado justo debajo del botón de "crear nota", en el lateral izquierdo. Contiene las notas, que son 3 botones; el primer botón no es funcional, sirve simplemente para mostrar el icono de la nota, el segundo botón sirve para mostrar la nota pulsada por pantalla, y el tercer botón sirve para eliminar la nota.
+>
+> **Cuerpo**: Muestra en la parte superior el título en grande, abajo del mismo la fecha un poco más pequeña, y debajo de la fecha, el textarea que cubre toda la pantalla restante.
 
 ### Estructura gráfica de la interface
 
@@ -160,9 +160,9 @@ En esta etapa, se definen los casos de prueba que se utilizarán para evaluar la
 
 Por ejemplo:
 
-> Nombre del caso de prueba: **Inicio de sesión exitoso**
+> Nombre del caso de prueba: **Creación de nota con exitoso**
 > 
-> Descripción: El objetivo de este caso de prueba es verificar que un usuario pueda iniciar sesión en la aplicación web de manera exitosa utilizando sus credenciales de inicio de sesión.
+> Descripción: El objetivo de este caso de prueba es verificar que se pueda crear una nota en la aplicación web de manera exitosa utilizando una fecha y un título válido.
 > 
 > Precondiciones: 
 > - El usuario debe tener una cuenta válida en la aplicación web.
@@ -229,42 +229,121 @@ Se copia y describe el funcionamiento del script.
 
 # HERRAMIENTAS
 
-Descripción de todas las herramientas que se han usado para el desarrollo del proyecto. Por ejemplo:
-
 > Para la realización del proyecto se han empleado las siguientes herramientas:
 > ## Visual Studio
 > 
-> Descripción de Visual Studio
+> Visual Studio es una herramienta de desarrollo eficaz que permite completar todo el ciclo de desarrollo en un solo lugar. Es un entorno de desarrollo integrado (IDE) completo que puede usar para escribir, editar, depurar y compilar el código y, luego, implementar la aplicación.
 > 
 > ### Características
 > 
-> Breve descripción de las características y plugins que hemos usado 
+> Instalación modular.
+> Creación de aplicaciones Azure.
+> Creación de aplicaciones web.
+> Creación de aplicaciones y juegos multiplataforma.
+> Conectarse a bases de datos.
+> Depurar, probar y mejorar el código.
+> Implementación de aplicaciones.
 > 
 
 # LENGUAJES
-
-Descripción de los lenguajes y frameworks utilizados para el desarrollo del proyecto. Por ejemplo:
-
 > ## HTML
 > 
-> Descripción de qué es HTML
+> El Lenguaje de Marcado de Hipertexto (HTML) es el código que se utiliza para estructurar y desplegar una página web y sus contenidos. Por ejemplo, sus contenidos podrían ser párrafos, una lista con viñetas, o imágenes y tablas de datos
 > 
 > ### Características
 > 
-> Breve descripción de sus características  
+> Es fácil de usar y entender.
+> Es utilizado para crear páginas web.
+> Permite describir hipertextos.
+> Permite que el usuario se mueva por cualquier sitio de Internet haciendo clic en un texto específico —hipervínculo—.  
+>
+
+> ## Javascript
+> 
+> JavaScript es un lenguaje de programación diseñado en un principio para añadir interactividad a las páginas webs y crear aplicaciones web. A pesar de la similitud en el nombre, no está relacionado con Java. Se emplea en el desarrollo de páginas web para tareas como cambiar automáticamente la fecha de una página, hacer que una página aparezca en una ventana emergente al hacer clic en un enlace o que un texto o imagen cambien al pasar el ratón por encima. También suele emplearse para hacer encuestas y formularios. Se ejecuta en el ordenador del visitante a la web, por lo que no requiere descargas constantes desde el sitio web.
+> 
+> ### Características
+> 
+> Simplicidad. Posee una estructura sencilla que lo vuelve más fácil de aprender e implementar.
+> Velocidad. Se ejecuta más rápido que otros lenguajes y favorece la detección de los errores.
+> Versatilidad. Es compatible con otros lenguajes, como: PHP, Perl y Java.
+> Popularidad.
+> Carga del servidor.
+> Actualizaciones  
+> 
+
+> ## Php
+> 
+> PHP es el acrónimo recursivo de Hypertext Preprocessor, un lenguaje de programación de código abierto muy utilizado especialmente en el desarrollo de aplicaciones y web, este lenguaje de código puede ser incrustado en HTML5 puesto que es un código muy variable favorece el enlace entre la interfaz de usuario y los servidores.
+> 
+> ### Características
+> 
+> lenguaje muy potente
+> Gran extensión de documentación.
+> Variedad de herramientas para aprender.
+> Mucha oferta de trabajo.
+> Permite programación orientada a objetos.
+> Módulos externos para mejorar la aplicación web.
+> Se puede separar la estructura.
+> La libertad es un bien muy preciado. 
+> 
+
+> ## Css
+> 
+> Abreviado en sus siglas en inglés, Cascading Style Sheets, que significa hojas de estilo en cascada, el CSS es una función que se agrega a HTML que proporciona tanto a los desarrolladores de sitios Web, así como a los usuarios, más control sobre cómo se muestran las páginas. Con CSS, los diseñadores y los usuarios pueden crear hojas de estilo que definen cómo aparecen los diferentes elementos, como los encabezados y los enlaces. Estas hojas de estilo se pueden aplicar a cualquier página Web, y nos permite optimizarla para mejorar su posicionamiento.
+> 
+> ### Características
+> 
+> Es un lenguaje de programación diferente a HTML.
+> Permite el apilamiento de instrucciones para definir formatos específicos.
+> Es utilizable en todos los navegadores y plataformas.
+> Optimiza el funcionamiento de las páginas web.
+> Tiene una sintaxis específica. 
+> 
+
+> ## Sql
+> 
+> La sigla que se conoce como SQL corresponde a la expresión inglesa Structured Query Language (entendida en español como Lenguaje de Consulta Estructurado), la cual identifica a un tipo de lenguaje vinculado con la gestión de bases de datos de carácter relacional que permite la especificación de distintas clases de operaciones entre éstas. Gracias a la utilización del álgebra y de cálculos relacionales, el SQL brinda la posibilidad de realizar consultas con el objetivo de recuperar información de las bases de datos de manera sencilla.
+> 
+> ### Características
+> 
+> Lenguaje estandarizado. Estandarizado en 1986, el lenguaje de programación SQL permite desplegar implementaciones del mismo en diferentes sistemas, usando prácticamente el mismo código para todos ellos.
+> Integridad de los datos.
+> Flexibilidad.
+> Sencillez y claridad.  
+> 
+
+> ## Bash
+> 
+> Un script de shell es un archivo de texto que contiene uno o más comandos UNIX. Los scripts de shell sirven para ejecutar los comandos que, de otro modo, introducirías en la línea de comandos.
+> 
+> ### Características
+> 
+> Son fáciles de programarse.
+> Tienen un mayor costo de procesamiento cuando son ejecutados.
+> Usan intérpretes en lugar de compiladores para ejecutarse.
+> Pueden interactuar o comunicarse con componentes escritos en otros lenguajes de programación.  
 > 
 
 # PRODUCTO
-
-Se muestran diferentes pantallas que constituyen el desarrollo final de la aplicación:
-
 ## Página de Inicio
 
-![EjemploInicio](Imagenes/EjemploInicio.png)
+Inicio:
+![EjemploInicio](Imagenes/Pagina_Inicio.png)
 
-Y lo vamos realizando con todas las pantallas.
+Nota seleccionada:
+![NotaSeleccionada](Imagenes/Pagina_nota_seleccionada.png)
+
+Creación de nota:
+![NotaCrear](Imagenes/CrearNota.png)
+
+Cambiar icono:
+![NotaIcono](Imagenes/CambiarIcono.png)
+
+Crear alarma:
+![NotaAlarma](Imagenes/CrearAlarma.png)
+
 # BIBLIOGRAFÍA
 
-Incluye la bibliografía y webgrafía que hayas empleado para el desarrollo de tu proyecto.
-
-
+Para el desarrollo de mi proyecto he empleado el uso de bootstrap, repositorios de github y stackoverflow.
+Para las fuentes he utilizado GoogleFonts y para el logo utilicé logomakr.

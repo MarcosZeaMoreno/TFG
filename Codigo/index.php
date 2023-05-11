@@ -100,11 +100,11 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <form class="formulario" id="formulario" action="config/register.php" method="post">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Introduzca una fecha</label>
+                                <label for="fecha" class="form-label">Introduzca una fecha</label>
                                 <input type="text" id="fecha" name="reg_fecha" class="form-control" id="exampleFormControlInput1" placeholder="Ejemplo de fecha -> 2023/07/23" />
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Introduzca un título</label>
+                                <label for="titulo" class="form-label">Introduzca un título</label>
                                 <input type="text" id="titulo" name="reg_titulo" class="form-control" id="exampleFormControlInput1" placeholder="Ejemplo de título -> Poema atardecer" />
                             </div>
                         </div>

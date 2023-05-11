@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var patron_texto = /^[a-zA-ZÀ-ÿ\s]{1,20}$/;
     if (!patron_texto.test(document.getElementById("titulo").value)) {
-      alert("El titulo no es válido. Tiene que introducir de 1 a 20 carácteres.");
+      alert("El titulo no es válido. Tiene que introducir de 1 a 20 carácteres y que no hayan números ni carácteres especiales.");
       document.getElementById("titulo").focus();
       if (document.getElementById("titulo").classList.contains("negro")) {
         document.getElementById("titulo").classList.remove("negro");
