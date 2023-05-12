@@ -1,17 +1,17 @@
 Estas Son algunas de las consultas que podemos hacer a la base de datos:
 
--
+- SELECT id_nota, titulo, fecha, texto, id_icono FROM notas
 
--
+- SELECT nombre, id_icono, link_icono FROM iconos
 
--
+- SELECT link_icono FROM iconos WHERE id_icono = 2
 
--
+- SELECT titulo, fecha, texto, id_nota FROM notas WHERE id_nota = 317
 
--
+- DELETE FROM notas WHERE id_nota = 4887
 
--
+- UPDATE notas SET id_icono = 5 WHERE id_nota = 8678
 
--
+- UPDATE notas SET texto = "Hello World!" WHERE id_nota = 27708
 
--
+- INSERT INTO notas(id_nota, titulo, fecha, texto, id_icono) VALUES (12469, "Titulo", "1996/04/01", "Texto", "3")

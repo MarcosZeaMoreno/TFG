@@ -279,7 +279,7 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 > 
 > Resultados esperados:
 > - La aplicación web debe validar los valores de los campos introducidos y registrar la nota en la base de datos.
-> - El usuario debe de ver la nota creada a la izquierda.
+> - El usuario debe de ver la nota creada en la columna de la izquierda.
 > 
 > Condiciones de aprobación:
 > 
@@ -292,17 +292,55 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 > 
 > Pasos: 
 > 
-> - Pulsar el botón  y acceder a la interfaz de ella.
-> - Ingresar la fecha en el campo "Fecha".
+> - Pulsar el botón con una flecha para abajo y accede a la interfaz de cambio de icono.
+> - Pulsar un icono cualquiera de los mostrados.
 > 
 > Resultados esperados:
-> - La aplicación web debe validar los valores de los campos introducidos y registrar la nota en la base de datos.
-> - El usuario debe de ver la nota creada a la izquierda.
+> - La aplicación web debe cambiar el icono de la nota seleccionada.
+> - El usuario debe de ver el nuevo icono de la nota en la columna de la izquierda.
 > 
 > Condiciones de aprobación:
 > 
-> - Si la aplicación web valida los valores de los campos introducidos y registra la nota en la base de datos, el caso de prueba se considera aprobado.
-> - Si la aplicación web no valida los valores de los campos introducidos o no se registra la nota en la base de datos, el caso de prueba se considera fallido.
+> - Si el icono de la nota seleccionada se ha cambiado en la nota y en la base de datos, el caso de prueba se considera aprobado.
+> - Si el icono de la nota seleccionada no se cambia en la nota o en la base de datos, el caso de prueba se considera fallido.
+
+> Nombre del caso de prueba: **Eliminación de nota exitosa**
+> 
+> Descripción: El objetivo de este caso de prueba es verificar que se pueda eliminar una nota en la aplicación web.
+> 
+> Pasos: 
+> 
+> - Pulsar el botón de "X" de la nota que quiera eliminar.
+> - Aceptar el mensaje de advertencia de "¿Estás seguro de que quieres borrar esta nota?".
+> 
+> Resultados esperados:
+> - La aplicación web debe eliminar la nota en la base de datos.
+> - El usuario no debe de ver la nota eliminada previamente en la columna de la izquierda.
+> 
+> Condiciones de aprobación:
+> 
+> - Si la aplicación web elimina la nota en la base de datos y no se muestra, el caso de prueba se considera aprobado.
+> - Si la aplicación web no elimina la nota en la base de datos o se sigue mostrando, el caso de prueba se considera fallido.
+
+> Nombre del caso de prueba: **Creación de alarma**
+> 
+> Descripción: El objetivo de este caso de prueba es verificar que se puede crear una alarma en la aplicación web de manera exitosa.
+> 
+> Pasos: 
+> 
+> - Pulsar el botón con un reloj y accede a la interfaz de creación de alarma.
+> - Ingresar la hora en el campo "Hora".
+> - Ingresar los minutos en el campo "Minutos".
+> - Ingresar si queremos que sueno por la mañana o por la tarde en el campo "AM/PM".
+> 
+> Resultados esperados:
+> - Los campos se desactivarán para que no se puedan cambiar una vez ya creada la alarma. En cualquier caso se podría quitar la alarma.
+> - Donde antes había un botón que ponía "Crear alarma", ahora hay uno que pone "Quitar alarma".
+> 
+> Condiciones de aprobación:
+> 
+> - Si la alarma suena a la hora seleccionada, el caso de prueba se considera aprobado.
+> - Si la alarma no suena a la hora seleccionada, el caso de prueba se considera fallido.
 
 ## Implementación de pruebas
 
@@ -312,32 +350,81 @@ Por ejemplo:
 
 > Caso de prueba: CP1. Creación de nota exitosa
 >
-> Se realiza una prueba manual de Inicio de sesión con las siguientes casuísticas:
+> Se realiza una prueba manual de creación de notas con las siguientes casuísticas:
 >
-> - CP1.1 Usuario registrado en el sistema y contraseña correcta.
-> - CP1.2 Usuario registrado en el sistema y constraseña incorrecta.
-> - CP1.3 Usuario no registrado en el sistema.
+> - CP1.1 Creación de nota con título y fecha válidas.
+> - CP1.2 Creación de nota con título o fecha no válidas.
 >
+
+> Caso de prueba: CP2. Cambio de icono en una nota
+>
+> Se realiza una prueba manual de cambio de icono de una nota con las siguientes casuísticas:
+>
+> - CP2.1 Cambio de icono en una nota válida.
+> - CP2.2 Cambio de icono en una nota no válida.
+>
+
+> Caso de prueba: CP3. Eliminación de nota exitosa
+>
+> Se realiza una prueba manual de eliminación de notas con la siguiente casuística:
+>
+> - CP3.1 Eliminación de una nota ya existente.
+> - CP3.2 Eliminación de una nota recién creada.
+>
+
+> Caso de prueba: CP4. Creación de alarma
+>
+> Se realiza una prueba manual de creación de alarma con las siguientes casuísticas:
+>
+> - CP4.1 Creación de alarma.
+> - CP4.2 Creación de alarma con campos escogidos aleatoriamente.
+> - CP4.3 Quitar alarma creada.
+> - CP4.4 Crear alarma, quitarla y volverla a crear.
+>
+
 ## Análisis de resultados 
 
-En esta etapa, se analizan los resultados de las pruebas para identificar errores y problemas en la aplicación. 
-
-Por ejemplo:
-
-> **Tabla resumen**
 > 
 > | Casos de prueba       |   |
 > |-----------------------|:-:|
-> | CP1. Inicio de sesión | Resultado | 
+> | CP1. Creación de nota | Resultado | 
 > | CP1.1                 | Ok   | 
 > | CP1.2                 | Ok   | 
-> | CP1.3                 | Fail | 
 >
-> Se han realizado 35 pruebas en total, de las cuales 33 fueron exitosas y 2 fallaron. De las 2 pruebas que fallaron fueron debidos a errores de la conexión de internet con el servidor.
-> A partir de estos resultados podemos hacer las siguientes observaciones:
-> - La mayoría de las pruebas fueron exitosas
-> - Los errores fueron debidos a problemas de conectividad, por lo que hay que implementar mecanismos que notifiquen al usuario de este tipo de errores, ya que están fuera del control de la aplicación.
-> - ...
+> Se han realizado varias pruebas, de las cuales ninguna me ha dado fallos. He probado todo tipo de valores para los campos pero todo ha ido como debería de ir.
+>
+
+> 
+> | Casos de prueba       |   |
+> |-----------------------|:-:|
+> | CP2. Cambio de icono | Resultado | 
+> | CP2.1                 | Ok   | 
+> | CP2.2                 | Ok   | 
+>
+> Se han probado todos los iconos disponibles, y todos se han mostrado sin problema alguno.
+>
+
+> 
+> | Casos de prueba       |   |
+> |-----------------------|:-:|
+> | CP3. Cambio de icono | Resultado | 
+> | CP3.1                 | Ok   | 
+> | CP3.2                 | Ok   | 
+>
+> Se ha borrado notas desde ya creadas hasta creadas recientemente y ninguna ha dado fallos.
+>
+
+> 
+> | Casos de prueba       |   |
+> |-----------------------|:-:|
+> | CP4. Cambio de icono | Resultado | 
+> | CP4.1                 | Ok   | 
+> | CP4.2                 | Ok   | 
+> | CP4.3                 | Ok   | 
+> | CP4.4                 | Ok   | 
+>
+> Se ha probado todos los casos de prueba, que son todas las pruebas posibles de la alarma, y todas han pasado las pruebas con un aprobado.
+>
 
 
 
