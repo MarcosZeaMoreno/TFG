@@ -422,8 +422,6 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 > Se ha probado todos los casos de prueba, que son todas las pruebas posibles de la alarma, y todas han pasado las pruebas con un aprobado.
 >
 
-
-
 # DESPLIEGUE
 
 ``` [bash]
