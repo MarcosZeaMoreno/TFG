@@ -479,21 +479,19 @@ echo "http://$HOST/index.php" | tr -d '[[:space:]]'
 > 
 
 # PRODUCTO
-## Página de Inicio
-
-Inicio:
+## Inicio:
 ![EjemploInicio](Imagenes/Pagina_Inicio.png)
 
-Nota seleccionada:
+## Nota seleccionada:
 ![NotaSeleccionada](Imagenes/Pagina_nota_seleccionada.png)
 
-Creación de nota:
+## Creación de nota:
 ![NotaCrear](Imagenes/CrearNota.png)
 
-Cambiar icono:
+## Cambiar icono:
 ![NotaIcono](Imagenes/CambiarIcono.png)
 
-Crear alarma:
+## Crear alarma:
 ![NotaAlarma](Imagenes/CrearAlarma.png)
 
 # BIBLIOGRAFÍA
