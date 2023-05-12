@@ -1,5 +1,6 @@
 - [Gestor de Notas](#gestor-de-notas)
   - [Antecedentes](#antecedentes)
+  - [Url video presentación](#url-video-presentacion)
 - [REQUISITOS](#requisitos)
   - [Requisitos funcionales](#requisitos-funcionales)
 - [ANÁLISIS Y DISEÑO WEB](#análisis-y-diseño-web)
@@ -28,6 +29,9 @@
 - [BIBLIOGRAFÍA](#bibliografía)
 
 # Gestor de notas
+## Url video presentacion
+https://youtu.be/tOLy7dpKEeo
+
 ## Antecedentes
 
 El Gestor de Notas surge de la necesidad de tener un sistema para guardar notas que permita una personalización más completa y una mejor organización de las mismas.
@@ -376,6 +380,7 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 > - CP4.2 Creación de alarma con campos escogidos aleatoriamente.
 > - CP4.3 Quitar alarma creada.
 > - CP4.4 Crear alarma, quitarla y volverla a crear.
+> - CP4.5 Crear alarma y reiniciar la página.
 >
 
 ## Análisis de resultados 
@@ -418,8 +423,9 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 > | CP4.2                 | Ok   | 
 > | CP4.3                 | Ok   | 
 > | CP4.4                 | Ok   | 
+> | CP4.5                 | Fail   | 
 >
-> Se ha probado todos los casos de prueba, que son todas las pruebas posibles de la alarma, y todas han pasado las pruebas con un aprobado.
+> Se han aprobado todos los casos de pruebas, excepto el último, que consiste en crear una alarma y reiniciar la página. Ha fallado porque la alarma se ejecuta en un javascript y al reiniciar la página se reinicia el código de javascript.
 >
 
 # DESPLIEGUE
