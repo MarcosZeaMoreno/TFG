@@ -344,10 +344,6 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 
 ## Implementación de pruebas
 
-En esta etapa, se llevan a cabo las pruebas utilizando los casos de prueba definidos. Esto puede incluir pruebas manuales, automatizadas o una combinación de ambas.
-
-Por ejemplo:
-
 > Caso de prueba: CP1. Creación de nota exitosa
 >
 > Se realiza una prueba manual de creación de notas con las siguientes casuísticas:
