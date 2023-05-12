@@ -56,6 +56,7 @@ Además de los requisitos funcionales, están los siguientes:
 Colores primarios corporativos:
 - #f2b269
 - #ffffff
+
 Colores secundarios:
 - #6c757d
 - #000000
@@ -67,7 +68,7 @@ Colores secundarios:
 
 ## Logotipo
 
-![Logotipo](Imagenes/LogoGdn.png)
+![Logotipo](Imagenes/LogoGdN.png)
 
 ## Planificación de tareas
 
@@ -76,21 +77,130 @@ Colores secundarios:
 ## Base de datos
 ### Diseño Entidad Relación de la BBDD
 
-Realizamos el Esquema Entidad Relación de la BBDD de nuestra aplicación.
+![EsquemaED](Imagenes/EsquemaED.png)
 
-Se debe mostrar el diseño relacional. No lo que os muestra la aplicación MySQL Workbench o el gestor que usais. Quiero los diagrmas E-R con cajas para las entidades y rombos para las relaciones. Se deben tener en cuenta las cardinalidades.
 ### Modelo relacional BBDD
 
-Se muestra el diseño de la BBDD según el GUI que esteís usando. Deben aparecer todas las entidades en la 3FN, los campos de las tablas y las cardinalidades.
+![ModeloRelacional](Imagenes/ModeloRelacional.png)
+
 ### Script de creación BBDD
 
-Scrip de creación de las BBDD, sin los datos. Cada una de las tablas con sus claves referenciadas. 
+``` [sql]
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-05-2023 a las 18:09:45
+-- Versión del servidor: 8.0.32
+-- Versión de PHP: 8.2.0
 
-El lector debe comprender lo que está leyendo, no se pone el script sin más, hay que explicarlo.
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+
+/* En el siguiente párrafo se crea la tabla "gestor_notas" en el caso de que no exista. Con el comando "USE" lo que hace es utilizar la base de datos que se indica (gestor_notas) */;
+--
+-- Base de datos: `gestor_notas`
+--
+CREATE DATABASE IF NOT EXISTS `gestor_notas` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci;
+USE `gestor_notas`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `iconos`
+--
+
+CREATE TABLE `iconos` (
+  `Nombre` varchar(65) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `id_icono` int NOT NULL,
+  `link_icono` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notas`
+--
+
+CREATE TABLE `notas` (
+  `id_nota` int NOT NULL,
+  `titulo` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `texto` text COLLATE utf8mb3_spanish_ci NOT NULL,
+  `id_icono` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+
+/*Añadimos llave primaria a la columna "iconos"*/;
+--
+-- Indices de la tabla `iconos`
+--
+ALTER TABLE `iconos`
+  ADD PRIMARY KEY (`id_icono`);
+
+
+
+/*Añadimos llave primaria a la columna "id_notas" y un índice a la columna "id_icono" para posteriormente añadirle una foreing key*/;
+--
+-- Indices de la tabla `notas`
+--
+ALTER TABLE `notas`
+  ADD PRIMARY KEY (`id_nota`),
+  ADD KEY `id_icono` (`id_icono`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+
+/*Aquí abajo lo que hacemos es crear la foreing key en "id_icono" de la tabla "iconos", haciendo referencia a la columna "id_icono" de la tabla notas */;
+--
+-- Filtros para la tabla `notas`
+--
+ALTER TABLE `notas`
+  ADD CONSTRAINT `notas_ibfk_1` FOREIGN KEY (`id_icono`) REFERENCES `iconos` (`id_icono`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+```
 
 ### Consultas 
 
-Se incluyen y describen todas las consultas que se emplean en el desarrollo del proyecto.
+Consultas utilizadas en el proyecto:
+``` [sql]
+
+SELECT id_nota, titulo, fecha, texto, id_icono FROM notas
+
+SELECT nombre, id_icono, link_icono FROM iconos
+
+SELECT link_icono FROM iconos WHERE id_icono = :id_icono
+
+SELECT titulo, fecha, texto, id_nota FROM notas WHERE id_nota = :id_nota
+
+DELETE FROM notas WHERE id_nota = :id_nota
+
+UPDATE notas SET id_icono = :id_icono WHERE id_nota = :id_nota
+
+UPDATE notas SET texto = :texto WHERE id_nota = :id_nota
+
+INSERT INTO notas(id_nota, titulo, fecha, texto, id_icono) VALUES (:id_nota, :titulo, :fecha, :texto, :id_icono)
+
+```
 
 ## Validación de formularios
 
@@ -156,33 +266,43 @@ El objetivo de las pruebas es garantizar que la aplicación sea confiable, segur
 
 ## Diseño de casos de prueba
 
-En esta etapa, se definen los casos de prueba que se utilizarán para evaluar la funcionalidad de la aplicación. Estos casos de prueba deben ser lo suficientemente exhaustivos para cubrir todos los aspectos importantes de la aplicación.
-
-Por ejemplo:
-
-> Nombre del caso de prueba: **Creación de nota con exitoso**
+> Nombre del caso de prueba: **Creación de nota exitosa**
 > 
 > Descripción: El objetivo de este caso de prueba es verificar que se pueda crear una nota en la aplicación web de manera exitosa utilizando una fecha y un título válido.
 > 
-> Precondiciones: 
-> - El usuario debe tener una cuenta válida en la aplicación web.
-> - El usuario debe tener un nombre de usuario y contraseña válidos.
-> 
 > Pasos: 
 > 
-> - Navegar a la página de inicio de sesión de la aplicación web.
-> - Ingresar el nombre de usuario del usuario en el campo "Nombre de usuario".
-> - Ingresar la contraseña del usuario en el campo "Contraseña".
-> - Hacer clic en el botón "Iniciar sesión".
+> - Pulsar el botón de "Nueva nota" y acceder a la interfaz de ella.
+> - Ingresar la fecha en el campo "Fecha".
+> - Ingresar el título en el campo "Título".
+> - Hacer clic en el botón "Crear nota".
 > 
 > Resultados esperados:
-> - La aplicación web debe validar las credenciales del usuario y permitir el acceso a la página principal de la aplicación.
-> - El usuario debe ser redirigido a la página principal de la aplicación web.
+> - La aplicación web debe validar los valores de los campos introducidos y registrar la nota en la base de datos.
+> - El usuario debe de ver la nota creada a la izquierda.
 > 
 > Condiciones de aprobación:
 > 
-> - Si la aplicación web valida las credenciales del usuario y permite el acceso a la página principal de la aplicación, el caso de prueba se considera aprobado.
-> - Si la aplicación web no valida las credenciales del usuario o no permite el acceso a la página principal de la aplicación, el caso de prueba se considera fallido.
+> - Si la aplicación web valida los valores de los campos introducidos y registra la nota en la base de datos, el caso de prueba se considera aprobado.
+> - Si la aplicación web no valida los valores de los campos introducidos o no se registra la nota en la base de datos, el caso de prueba se considera fallido.
+
+> Nombre del caso de prueba: **Cambio de icono en una nota**
+> 
+> Descripción: El objetivo de este caso de prueba es verificar que se pueda cambiar el icono en una nota en la aplicación web de manera exitosa.
+> 
+> Pasos: 
+> 
+> - Pulsar el botón  y acceder a la interfaz de ella.
+> - Ingresar la fecha en el campo "Fecha".
+> 
+> Resultados esperados:
+> - La aplicación web debe validar los valores de los campos introducidos y registrar la nota en la base de datos.
+> - El usuario debe de ver la nota creada a la izquierda.
+> 
+> Condiciones de aprobación:
+> 
+> - Si la aplicación web valida los valores de los campos introducidos y registra la nota en la base de datos, el caso de prueba se considera aprobado.
+> - Si la aplicación web no valida los valores de los campos introducidos o no se registra la nota en la base de datos, el caso de prueba se considera fallido.
 
 ## Implementación de pruebas
 
@@ -190,7 +310,7 @@ En esta etapa, se llevan a cabo las pruebas utilizando los casos de prueba defin
 
 Por ejemplo:
 
-> Caso de prueba: CP1. Inicio de sesión exitoso
+> Caso de prueba: CP1. Creación de nota exitosa
 >
 > Se realiza una prueba manual de Inicio de sesión con las siguientes casuísticas:
 >
@@ -223,9 +343,42 @@ Por ejemplo:
 
 # DESPLIEGUE
 
-Creación de un Script en BASH que permita el despliegue en automático de la aplicación en cualquier servidor linux, que contenga un Apache+PHP y una base de datos SQL.
+``` [bash]
 
-Se copia y describe el funcionamiento del script.
+#!/bin/bash
+#
+# Script en bash de despliegue del proyecto de final de grado (TFG).
+#
+# Marcos Zea Moreno
+
+# Variables de entorno
+USERDB="debianDB"
+PASSDB="debianDB"
+HOST=$(hostname -I)
+WWW="/var/www/html/"
+
+# Fichero con los datos de la base de datos del proyecto
+DATOS="Datos.sql"
+BBDD="gestor_notas"
+
+# Se toman los parámetros como USER y PASS de la BBDD
+if [ $# = 2 ];
+then
+   USERDB=$1
+   PASSDB=$2
+fi
+
+# Copiamos el contenido de la carpeta proyecto a la página html
+cp -r ../Codigo/* $WWW
+
+# Restauramos los datos de ejemplo a la BBDD
+mysqladmin -u $USERDB -p$USERDB create $BBDD
+mysql -u $USERDB -p$USERDB $BBDD < ../DataBase/$DATOS
+
+# Mostramos url de carga
+echo "http://$HOST/index.php" | tr -d '[[:space:]]'
+
+```
 
 # HERRAMIENTAS
 
