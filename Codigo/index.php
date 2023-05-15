@@ -327,9 +327,9 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <div id="titulo_nota">
                         <h1>' . $row['titulo'] . '</h1><h5>' . $row['fecha'] . '</h5>
                     </div>
-                    <form action="config/register_textarea.php" id="form_textarea" method="post">
+                    <form id="form_textarea" method="post">
                         <textarea class="textarea_notas text-bad-script" spellcheck="false" name="reg_texto" id="area_texto">' . $row['texto'] . '</textarea>
-                        <input type="hidden" name="reg_id_nota" value="' . $row['id_nota'] . '">
+                        <input type="hidden" name="reg_id_nota" id="id_nota" value="' . $row['id_nota'] . '">
                         <script type="text/javascript" src="script/textarea.js"></script>
                     </form>
                 </div>';

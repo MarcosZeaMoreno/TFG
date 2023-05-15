@@ -1,13 +1,27 @@
-const input = document.getElementById("area_texto");
-let timer;
+const inputTexto = document.getElementById("area_texto");
+const inputIdNota = document.getElementById("id_nota");
 
-input.addEventListener("input", () => {
+let timer;
+inputTexto.addEventListener("input", () => {
   clearTimeout(timer);
   timer = setTimeout(() => {
-    document.getElementById("form_textarea").submit();
+    enviarDatosFormulario();
   }, 1000);
 });
 
-const end = input.value.length;
-input.setSelectionRange(end, end);
-input.focus();
+const enviarDatosFormulario = () => {
+  const contenido = inputTexto.value;
+  const idNota = inputIdNota.value;
+
+  const datosFormulario = new FormData();
+  datosFormulario.append('reg_texto', contenido);
+  datosFormulario.append('reg_id_nota', idNota);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', './config/register_textarea.php', true);
+  xhr.send(datosFormulario);
+};
+
+const end = inputTexto.value.length;
+inputTexto.setSelectionRange(end, end);
+inputTexto.focus();
