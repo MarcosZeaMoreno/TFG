@@ -317,6 +317,37 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <!-- Mostrar Cuerpo (Titulo, Fecha y Textarea) -->
                 <?php
 
+                function formatearFecha($fecha) {
+                    $meses = array(
+                    'January' => 'enero',
+                    'February' => 'febrero',
+                    'March' => 'marzo',
+                    'April' => 'abril',
+                    'May' => 'mayo',
+                    'June' => 'junio',
+                    'July' => 'julio',
+                    'August' => 'agosto',
+                    'September' => 'septiembre',
+                    'October' => 'octubre',
+                    'November' => 'noviembre',
+                    'December' => 'diciembre'
+                    );
+
+                    $timestamp = strtotime($fecha);
+                    $dia = date("d", $timestamp);
+                    $mes = date('F', $timestamp);
+                    $anio = date('Y', $timestamp);
+                    $hora = date('H', $timestamp);
+                    $minuto = date('i', $timestamp);
+                    $am_pm = date('A', $timestamp);
+
+                    $mesEspanol = $meses[$mes];
+
+                    $fechaFormateada = $dia . ' de ' . $mesEspanol . ' de ' . $anio . ' a las ' . $hora . ':' . $minuto . $am_pm;
+
+                    return $fechaFormateada;
+                }
+
                 $id_nota = isset($_GET['id_nota']) ? $_GET['id_nota'] : null;
 
                 if ($id_nota) {
@@ -325,7 +356,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     echo '<div id="texto_notas" class="col-9 p-2 bg-light">
                     <h4 class="text-end"></h4>
                     <div id="titulo_nota">
-                        <h1>' . $row['titulo'] . '</h1><h5>' . $row['fecha'] . '</h5>
+                        <h1>' . $row['titulo'] . '</h1><h5>' . formatearFecha($row["fecha"]) . '</h5>
                     </div>
                     <form id="form_textarea" method="post">
                         <textarea class="textarea_notas text-bad-script" spellcheck="false" name="reg_texto" id="area_texto">' . $row['texto'] . '</textarea>
