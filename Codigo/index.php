@@ -337,13 +337,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     $dia = date("d", $timestamp);
                     $mes = date('F', $timestamp);
                     $anio = date('Y', $timestamp);
-                    $hora = date('H', $timestamp);
-                    $minuto = date('i', $timestamp);
-                    $am_pm = date('A', $timestamp);
 
                     $mesEspanol = $meses[$mes];
 
-                    $fechaFormateada = $dia . ' de ' . $mesEspanol . ' de ' . $anio . ' a las ' . $hora . ':' . $minuto . $am_pm;
+                    $fechaFormateada = $dia . ' de ' . $mesEspanol . ' de ' . $anio;
 
                     return $fechaFormateada;
                 }
