@@ -30,7 +30,7 @@
 
 # Gestor de notas
 ## Url video presentacion
-https://youtu.be/tOLy7dpKEeo
+https://youtu.be/TYd81KHTjns
 
 ## Antecedentes
 
